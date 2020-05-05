@@ -22,7 +22,7 @@ public class Set {
     { 
         try
         { 
-        	
+//        	
            String zookeeper = System.getenv("ZOOKEEPER_HOME");
            zookeeper = zookeeper + "/bin";
            String[] command = {"cmd.exe","/C","start","zkServer"};
@@ -35,13 +35,13 @@ public class Set {
              String kafka = System.getenv("KAFKA_HOME");
              kafka = kafka + "/bin/windows";	
        	     File file = new File(kafka+"/Toolskafka_2.12-2.5.0logs");
-       	     try
-       	     {
-       	    	delete(file);
-       	     }
-       	     catch (Exception e) {
-				// TODO: handle exception
-			 }
+//       	     try
+//       	     {
+//       	    	delete(file);
+//       	     }
+//       	     catch (Exception e) {
+//				System.out.println("can't delete file");
+//			 }
              String[] command1 = {"cmd.exe","/C","start","kafka-server-start.bat","C:\\Tools\\kafka_2.12-2.5.0\\config\\server.properties"};
              ProcessBuilder builder1 = new ProcessBuilder(command1);
              builder1 = builder1.directory(new File(kafka));

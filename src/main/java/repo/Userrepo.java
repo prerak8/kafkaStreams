@@ -3,9 +3,9 @@ package repo;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 
-import model.user;
+import model.User;
 
 @Repository
-public interface Userrepo extends MongoRepository<user, Integer> {
+public interface Userrepo extends MongoRepository<User, Integer> {
 
 }

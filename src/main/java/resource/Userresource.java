@@ -1,10 +1,8 @@
 package resource;
 
-import model.user;
+import model.User;
 import repo.Userrepo;
-
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,7 +10,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.json.simple.JSONObject;
 
 @RestController
 @RequestMapping("kafka")
@@ -27,16 +24,15 @@ public class Userresource {
 
     private static final String TOPIC = "Kafka_Example";
     
-    @PostMapping(value = "/publish",consumes = "application/json")
+    @PostMapping(value = "/publish",consumes = "text/plain")
     public String post(@RequestBody String s)
     {
-    	System.out.println(s);
-    	kafkaTemplate.send(TOPIC, s);
-    	return s;
+    	kafkaTemplate.send(TOPIC,"key",s);
+		return s;
     }
     
     @GetMapping("/all")
-    public List<user> post1(){
+    public List<User> post1(){
     	return userrepo.findAll();
     }
     
